@@ -19,8 +19,7 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Validation
+
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Erro",
@@ -30,13 +29,11 @@ export default function Contact() {
       return;
     }
 
-    // Success message
     toast({
       title: "Mensagem Enviada!",
       description: "Entraremos em contato em breve.",
     });
 
-    // Reset form
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -51,7 +48,10 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            Entre em <span className="bg-gradient-to-r from-brand-400 to-brand-500 bg-clip-text text-transparent">Contato</span>
+            Entre em{" "}
+            <span className="bg-gradient-to-r from-[#5290c2] to-[#5290c2] bg-clip-text text-transparent">
+              Contato
+            </span>
           </h2>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             Estamos prontos para ajudar o seu negócio a crescer
@@ -69,7 +69,9 @@ export default function Contact() {
             <Card className="p-8 bg-slate-800/50 backdrop-blur border-slate-700 shadow-2xl">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <Label htmlFor="name" className="text-slate-300">Nome Completo *</Label>
+                  <Label htmlFor="name" className="text-slate-300">
+                    Nome Completo *
+                  </Label>
                   <Input
                     id="name"
                     value={formData.name}
@@ -80,7 +82,9 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <Label htmlFor="email" className="text-slate-300">Email *</Label>
+                  <Label htmlFor="email" className="text-slate-300">
+                    Email *
+                  </Label>
                   <Input
                     id="email"
                     type="email"
@@ -92,7 +96,9 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <Label htmlFor="phone" className="text-slate-300">Telefone</Label>
+                  <Label htmlFor="phone" className="text-slate-300">
+                    Telefone
+                  </Label>
                   <Input
                     id="phone"
                     value={formData.phone}
@@ -103,7 +109,9 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <Label htmlFor="message" className="text-slate-300">Mensagem *</Label>
+                  <Label htmlFor="message" className="text-slate-300">
+                    Mensagem *
+                  </Label>
                   <Textarea
                     id="message"
                     value={formData.message}
@@ -116,7 +124,7 @@ export default function Contact() {
 
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white py-6 text-lg font-semibold rounded-2xl shadow-xl hover:shadow-brand-500/50 transition-all"
+                  className="w-full bg-[#5290c2] hover:bg-[#3d7aa5] text-white py-6 text-lg font-semibold rounded-2xl shadow-xl hover:shadow-[#5290c2]/50 transition-all"
                 >
                   Enviar Mensagem
                 </Button>
@@ -132,9 +140,9 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <Card className="p-6 bg-slate-800/50 backdrop-blur border-slate-700 hover:border-brand-500/50 hover:shadow-lg hover:shadow-brand-500/20 transition-all">
+            <Card className="p-6 bg-slate-800/50 backdrop-blur border-slate-700 hover:border-[#5290c2]/50 hover:shadow-lg hover:shadow-[#5290c2]/20 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-[#5290c2] rounded-2xl flex items-center justify-center flex-shrink-0">
                   <MapPin className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -147,9 +155,9 @@ export default function Contact() {
               </div>
             </Card>
 
-            <Card className="p-6 bg-slate-800/50 backdrop-blur border-slate-700 hover:border-brand-500/50 hover:shadow-lg hover:shadow-brand-500/20 transition-all">
+            <Card className="p-6 bg-slate-800/50 backdrop-blur border-slate-700 hover:border-[#5290c2]/50 hover:shadow-lg hover:shadow-[#5290c2]/20 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-[#5290c2] rounded-2xl flex items-center justify-center flex-shrink-0">
                   <Phone className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -162,9 +170,9 @@ export default function Contact() {
               </div>
             </Card>
 
-            <Card className="p-6 bg-slate-800/50 backdrop-blur border-slate-700 hover:border-brand-500/50 hover:shadow-lg hover:shadow-brand-500/20 transition-all">
+            <Card className="p-6 bg-slate-800/50 backdrop-blur border-slate-700 hover:border-[#5290c2]/50 hover:shadow-lg hover:shadow-[#5290c2]/20 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-500 to-brand-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 bg-[#5290c2] rounded-2xl flex items-center justify-center flex-shrink-0">
                   <Mail className="h-6 w-6 text-white" />
                 </div>
                 <div>
@@ -177,27 +185,27 @@ export default function Contact() {
               </div>
             </Card>
 
-            <Card className="p-6 bg-gradient-to-br from-slate-800 to-brand-900 border-slate-700">
+            <Card className="p-6 bg-slate-800 border-slate-700">
               <h3 className="text-lg font-bold text-white mb-4">Redes Sociais</h3>
               <div className="flex gap-4">
                 <motion.a
                   whileHover={{ scale: 1.1 }}
                   href="#"
-                  className="w-12 h-12 bg-white/10 hover:bg-brand-500 rounded-2xl flex items-center justify-center transition-colors"
+                  className="w-12 h-12 bg-white/10 hover:bg-[#5290c2] rounded-2xl flex items-center justify-center transition-colors"
                 >
                   <Facebook className="h-6 w-6 text-white" />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1 }}
                   href="#"
-                  className="w-12 h-12 bg-white/10 hover:bg-brand-500 rounded-2xl flex items-center justify-center transition-colors"
+                  className="w-12 h-12 bg-white/10 hover:bg-[#5290c2] rounded-2xl flex items-center justify-center transition-colors"
                 >
                   <Linkedin className="h-6 w-6 text-white" />
                 </motion.a>
                 <motion.a
                   whileHover={{ scale: 1.1 }}
                   href="#"
-                  className="w-12 h-12 bg-white/10 hover:bg-brand-500 rounded-2xl flex items-center justify-center transition-colors"
+                  className="w-12 h-12 bg-white/10 hover:bg-[#5290c2] rounded-2xl flex items-center justify-center transition-colors"
                 >
                   <Twitter className="h-6 w-6 text-white" />
                 </motion.a>

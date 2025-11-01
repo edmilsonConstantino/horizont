@@ -10,65 +10,111 @@ const services = [
     id: "contabilidade",
     icon: Calculator,
     title: "Contabilidade",
-    description: "Gestão contabilística completa e rigorosa para o seu negócio",
-    color: "from-brand-500 to-brand-600",
-    features: ["Contabilidade Geral", "Relatórios Financeiros", "Análise de Custos"]
+    color: "from-[#4c87b4] to-[#4c87b4]",
+    features: [
+      "Coleta e análise dos documentos de suporte",
+      "Lançamentos contabilísticos e revisão",
+      "Reconciliações e revisões de contas",
+      "Elaboração e análise de Balanço, DRE, Fluxo de Caixa e Relatório Estatutário"
+    ]
   },
   {
     id: "fiscalidade",
     icon: FileText,
-    title: "Fiscalidade",
-    description: "Consultoria fiscal especializada e otimização tributária",
-    color: "from-brand-400 to-brand-500",
-    features: ["Planeamento Fiscal", "Declarações", "Otimização Tributária"]
+    title: "Consultoria Fiscal",
+    color: "from-[#4c87b4] to-[#4c87b4]",
+    features: [
+      "Cálculo e apuramento de impostos mensais",
+      "Declarações anuais de informação contabilística e fiscal",
+      "Revisão fiscal e aconselhamento",
+      "Representação fiscal perante autoridades"
+    ]
+  },
+  {
+    id: "consultoria_financeira",
+    icon: TrendingUp,
+    title: "Consultoria Financeira",
+    color: "from-[#4c87b4] to-[#4c87b4]",
+    features: [
+      "Planeamento e Gestão Financeira",
+      "Gestão de Fluxo de Caixa",
+      "Otimização de Custos e Despesas",
+      "Análise e Gestão de Investimentos",
+      "Conformidade Financeira e Fiscal"
+    ]
   },
   {
     id: "auditoria",
     icon: ClipboardCheck,
     title: "Auditoria",
-    description: "Auditoria financeira e operacional com padrões internacionais",
-    color: "from-brand-600 to-brand-700",
-    features: ["Auditoria Externa", "Auditoria Interna", "Due Diligence"]
+    color: "from-[#4c87b4] to-[#4c87b4]",
+    features: [
+      "Due Diligences",
+      "Auditoria Operacional",
+      "Avaliação de Controlo Interno",
+      "Auditoria a Fundos UE e Bancos de Desenvolvimento"
+    ]
   },
   {
-    id: "consultoria",
+    id: "consultoria-gestao",
     icon: TrendingUp,
-    title: "Consultoria de Gestão",
-    description: "Estratégias personalizadas para crescimento sustentável",
-    color: "from-brand-300 to-brand-400",
-    features: ["Estratégia Empresarial", "Transformação Digital", "Gestão de Mudança"]
+    title: "Consultoria de Gestão Empresarial",
+    color: "from-[#4c87b4] to-[#4c87b4]",
+    features: [
+      "Reestruturação de Dívida",
+      "Planos de Negócio",
+      "Criação de Contas de Gestão",
+      "Due Diligence Financeira",
+      "Operações de M&A"
+    ]
   },
   {
     id: "controlo",
     icon: BarChart3,
     title: "Controlo de Gestão",
-    description: "Sistemas de controlo e análise de performance empresarial",
-    color: "from-brand-700 to-brand-800",
-    features: ["KPIs", "Dashboards", "Análise de Performance"]
+    color: "from-[#4c87b4] to-[#4c87b4]",
+    features: [
+      "Gestão de Disponibilidades e Contas de Terceiros",
+      "Manutenção dos Processos Bancários",
+      "Acompanhamento de Processos de Auditoria",
+      "Execução do Processo de Reporte de Gestão",
+      "Execução das Tarefas Administrativas da Empresa"
+    ]
   },
   {
     id: "rh",
     icon: Users,
     title: "Recursos Humanos",
-    description: "Gestão completa de RH e desenvolvimento organizacional",
-    color: "from-brand-200 to-brand-300",
-    features: ["Recrutamento", "Formação", "Gestão de Talentos"]
+    color: "from-[#4c87b4] to-[#4c87b4]",
+    features: [
+      "Cumprimento das Obrigações Fiscais Corporativas e Individuais",
+      "Payroll",
+      "Gestão de Relações Trabalhistas",
+      "Outsourcing de Processos na Área de Pessoal"
+    ]
   },
   {
     id: "administrativos",
     icon: Briefcase,
     title: "Serviços Administrativos",
-    description: "Suporte administrativo profissional e eficiente",
-    color: "from-brand-400 to-brand-600",
-    features: ["Gestão Documental", "Secretariado", "Apoio Operacional"]
+    color: "from-[#4c87b4] to-[#4c87b4]",
+    features: [
+      "Domiciliação",
+      "Centro de Expediente",
+      "Secretaria",
+      "Manual de Procedimentos"
+    ]
   },
   {
     id: "faturacao",
     icon: Receipt,
     title: "Faturação",
-    description: "Sistemas de faturação modernos e conformes",
-    color: "from-brand-500 to-brand-700",
-    features: ["Faturação Eletrónica", "Integração SAF-T", "Gestão de Cobranças"]
+    color: "from-[#4c87b4] to-[#4c87b4]",
+    features: [
+      "Preparação e emissão de faturas certificadas",
+      "Integração com softwares de faturação",
+      "Conformidade com autoridades tributárias"
+    ]
   }
 ];
 
@@ -90,7 +136,6 @@ export default function Services() {
 
   return (
     <section id="services" className="py-16 lg:py-24 bg-slate-950 relative overflow-hidden">
-      {/* Animated Background */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
@@ -107,17 +152,15 @@ export default function Services() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">
-            Nossos <span className="bg-gradient-to-r from-brand-400 to-brand-500 bg-clip-text text-transparent">Serviços</span>
+            Nossos <span className="bg-gradient-to-r from-[#4c87b4] to-[#4c87b4] bg-clip-text text-transparent">Serviços</span>
           </h2>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             Soluções completas e integradas para todas as necessidades da sua empresa
           </p>
         </motion.div>
 
-        {/* Mobile Carousel / Desktop Grid */}
         {!showAll ? (
           <div className="relative">
-            {/* Mobile: Single Card Carousel */}
             <div className="lg:hidden">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -132,39 +175,34 @@ export default function Services() {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Navigation Arrows */}
               <div className="flex justify-center gap-4 mt-6">
                 <Button
                   onClick={prevSlide}
                   size="icon"
-                  className="bg-white/10 hover:bg-white/20 text-white rounded-full"
+                  className="bg-[#4c87b4]/20 hover:bg-[#4c87b4]/30 text-white rounded-full"
                 >
                   <ChevronLeft className="h-6 w-6" />
                 </Button>
                 <Button
                   onClick={nextSlide}
                   size="icon"
-                  className="bg-white/10 hover:bg-white/20 text-white rounded-full"
+                  className="bg-[#4c87b4]/20 hover:bg-[#4c87b4]/30 text-white rounded-full"
                 >
                   <ChevronRight className="h-6 w-6" />
                 </Button>
               </div>
 
-              {/* Dots Indicator */}
               <div className="flex justify-center gap-2 mt-4">
                 {services.slice(0, 4).map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setCurrentIndex(i)}
-                    className={`h-2 rounded-full transition-all ${
-                      i === currentIndex ? "w-8 bg-brand-500" : "w-2 bg-slate-700"
-                    }`}
+                    className={`h-2 rounded-full transition-all ${i === currentIndex ? "w-8 bg-[#4c87b4]" : "w-2 bg-slate-700"}`}
                   />
                 ))}
               </div>
             </div>
 
-            {/* Desktop: 4 Cards Grid */}
             <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
               {services.slice(0, 4).map((service, index) => (
                 <motion.div
@@ -180,7 +218,6 @@ export default function Services() {
             </div>
           </div>
         ) : (
-          // Show All Grid
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((service, index) => (
               <motion.div
@@ -195,7 +232,6 @@ export default function Services() {
           </div>
         )}
 
-        {/* Toggle Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -205,7 +241,7 @@ export default function Services() {
           <Button
             onClick={() => setShowAll(!showAll)}
             size="lg"
-            className="bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white px-8 py-6 text-lg font-semibold rounded-2xl shadow-2xl hover:shadow-brand-500/50 transition-all group"
+            className="bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white px-8 py-6 text-lg font-semibold rounded-2xl shadow-2xl transition-all group"
           >
             {showAll ? "Ver Menos" : "Ver Todos os Serviços"}
             <ArrowRight className={`ml-2 h-5 w-5 transition-transform ${showAll ? "rotate-180" : ""}`} />
@@ -215,7 +251,6 @@ export default function Services() {
     </section>
   );
 }
-
 function ServiceCard({ service }: { service: typeof services[0] }) {
   const Icon = service.icon;
   const navigate = useNavigate();
@@ -223,43 +258,42 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
   return (
     <Card 
       onClick={() => navigate(`/service/${service.id}`)}
-      className="group relative bg-slate-900/50 backdrop-blur-xl border-slate-800 hover:border-brand-500/50 p-6 h-full cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-brand-500/20"
+      className="group relative bg-slate-900/50 backdrop-blur-xl border-slate-800 hover:border-[#4c87b4]/50 p-6 h-full cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#4c87b4]/20 flex flex-col"
     >
-      {/* Gradient Overlay */}
       <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
       
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col flex-1">
+        {/* Ícone */}
         <motion.div
           whileHover={{ scale: 1.05, rotate: 5 }}
           transition={{ type: "spring", stiffness: 300 }}
-          className="mb-4"
+          className="mb-4 flex justify-center lg:justify-start"
         >
           <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-2xl transition-shadow`}>
             <Icon className="h-8 w-8 text-white" />
           </div>
         </motion.div>
 
-        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-brand-400 transition-colors">
+        {/* Título */}
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 group-hover:text-[#4c87b4] transition-colors text-center lg:text-left">
           {service.title}
         </h3>
-        
-        <p className="text-slate-400 leading-relaxed mb-4">
-          {service.description}
-        </p>
 
-        <div className="space-y-2">
+        {/* Features */}
+        <div className="space-y-2.5 flex-1 mb-6">
           {service.features.map((feature, i) => (
-            <div key={i} className="flex items-center gap-2 text-sm text-slate-500">
-              <div className="w-1.5 h-1.5 rounded-full bg-brand-500" />
+            <div key={i} className="flex items-start gap-2.5 text-sm text-slate-300 leading-relaxed">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#4c87b4] mt-1.5 flex-shrink-0" />
               <span>{feature}</span>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 flex items-center text-brand-400 font-semibold group-hover:gap-2 transition-all">
-          <span>Saiba mais</span>
-          <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-        </div>
+        {/* Botão Saiba Mais */}
+        <button className="w-full sm:w-auto bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white px-6 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group/btn">
+          <span>Saiba Mais</span>
+          <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+        </button>
       </div>
     </Card>
   );
