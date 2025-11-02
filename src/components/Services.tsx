@@ -2,8 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Calculator, FileText, ClipboardCheck, TrendingUp, BarChart3, Users, Briefcase, Receipt, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const services = [
   {
@@ -121,17 +120,22 @@ const services = [
 export default function Services() {
   const [showAll, setShowAll] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const navigate = useNavigate();
 
-  const visibleServices = showAll ? services : services.slice(0, 4);
-  const displayedServices = showAll ? visibleServices : [services[currentIndex]];
+  useEffect(() => {
+    if (!showAll) {
+      const timer = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % services.length);
+      }, 4000);
+      return () => clearInterval(timer);
+    }
+  }, [showAll]);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % 4);
+    setCurrentIndex((prev) => (prev + 1) % services.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + 4) % 4);
+    setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
   };
 
   return (
@@ -193,7 +197,7 @@ export default function Services() {
               </div>
 
               <div className="flex justify-center gap-2 mt-4">
-                {services.slice(0, 4).map((_, i) => (
+                {services.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setCurrentIndex(i)}
@@ -203,18 +207,62 @@ export default function Services() {
               </div>
             </div>
 
-            <div className="hidden lg:grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
-              {services.slice(0, 4).map((service, index) => (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
+            <div className="hidden lg:block relative overflow-hidden">
+              <div className="relative h-[520px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <div className="grid grid-cols-2 xl:grid-cols-4 gap-6">
+                      {[0, 1, 2, 3].map((offset) => {
+                        const serviceIndex = (currentIndex + offset) % services.length;
+                        return (
+                          <motion.div
+                            key={serviceIndex}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: offset * 0.1, duration: 0.5 }}
+                          >
+                            <ServiceCard service={services[serviceIndex]} />
+                          </motion.div>
+                        );
+                      })}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-4 pointer-events-none z-10">
+                <Button
+                  onClick={prevSlide}
+                  size="icon"
+                  className="bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white rounded-full shadow-2xl pointer-events-auto w-12 h-12"
                 >
-                  <ServiceCard service={service} />
-                </motion.div>
-              ))}
+                  <ChevronLeft className="h-6 w-6" />
+                </Button>
+                <Button
+                  onClick={nextSlide}
+                  size="icon"
+                  className="bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white rounded-full shadow-2xl pointer-events-auto w-12 h-12"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </Button>
+              </div>
+
+              <div className="flex justify-center gap-2 mt-6">
+                {services.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentIndex(i)}
+                    className={`h-2 rounded-full transition-all ${i === currentIndex ? "w-8 bg-[#4c87b4]" : "w-2 bg-slate-700"}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         ) : (
@@ -251,19 +299,17 @@ export default function Services() {
     </section>
   );
 }
+
 function ServiceCard({ service }: { service: typeof services[0] }) {
   const Icon = service.icon;
-  const navigate = useNavigate();
 
   return (
     <Card 
-      onClick={() => navigate(`/service/${service.id}`)}
       className="group relative bg-slate-900/50 backdrop-blur-xl border-slate-800 hover:border-[#4c87b4]/50 p-6 h-full cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#4c87b4]/20 flex flex-col"
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
       
       <div className="relative z-10 flex flex-col flex-1">
-        {/* Ícone */}
         <motion.div
           whileHover={{ scale: 1.05, rotate: 5 }}
           transition={{ type: "spring", stiffness: 300 }}
@@ -274,12 +320,10 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
           </div>
         </motion.div>
 
-        {/* Título */}
         <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 group-hover:text-[#4c87b4] transition-colors text-center lg:text-left">
           {service.title}
         </h3>
 
-        {/* Features */}
         <div className="space-y-2.5 flex-1 mb-6">
           {service.features.map((feature, i) => (
             <div key={i} className="flex items-start gap-2.5 text-sm text-slate-300 leading-relaxed">
@@ -289,7 +333,6 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
           ))}
         </div>
 
-        {/* Botão Saiba Mais */}
         <button className="w-full sm:w-auto bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white px-6 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group/btn">
           <span>Saiba Mais</span>
           <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />

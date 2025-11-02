@@ -267,6 +267,7 @@ export default function Hero() {
 				</motion.div>
 
 				<div className="flex-1 relative">
+					{/* Desktop: animação completa do slide */}
 					<AnimatePresence mode="wait">
 						<motion.div
 							key={currentSlide}
@@ -274,24 +275,17 @@ export default function Hero() {
 							animate={{ opacity: 1, x: 0 }}
 							exit={{ opacity: 0, x: -100 }}
 							transition={{ duration: 0.7 }}
-							className="absolute inset-0"
+							className="absolute inset-0 hidden lg:block"
 						>
 							<div
-								className="absolute inset-0 bg-cover bg-center hidden lg:block"
+								className="absolute inset-0 bg-cover bg-center"
 								style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
 							>
 								<div className="absolute inset-0 bg-gradient-to-br from-[#1e3a5f]/90 via-[#2c5282]/85 to-[#1a365d]/90" />
 							</div>
 
-							<div className="absolute inset-0 bg-gradient-to-br from-[#1e3a5f] via-[#2c5282] to-[#1a365d] lg:hidden">
-								<div className="absolute inset-0 opacity-10">
-									<div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl"></div>
-									<div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"></div>
-								</div>
-							</div>
-
-							<div className="relative h-full flex items-center justify-center p-6 lg:p-12 pt-28 pb-32 lg:pt-12 lg:pb-12">
-								<div className="max-w-4xl text-center lg:text-left">
+							<div className="relative h-full flex items-center justify-center p-12">
+								<div className="max-w-4xl text-left">
 									<motion.div
 										initial={{ y: 30, opacity: 0 }}
 										animate={{ y: 0, opacity: 1 }}
@@ -302,29 +296,37 @@ export default function Hero() {
 										</span>
 									</motion.div>
 
-									<motion.h2
-										initial={{ y: 30, opacity: 0 }}
-										animate={{ y: 0, opacity: 1 }}
-										transition={{ delay: 0.4 }}
-										className="text-4xl sm:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight"
-									>
-										{slides[currentSlide].title}
-									</motion.h2>
+									<AnimatePresence mode="wait">
+										<motion.h2
+											key={`title-${currentSlide}`}
+											initial={{ opacity: 0, y: 20 }}
+											animate={{ opacity: 1, y: 0 }}
+											exit={{ opacity: 0, y: -20 }}
+											transition={{ duration: 0.5 }}
+											className="text-7xl font-black text-white mb-6 leading-tight"
+										>
+											{slides[currentSlide].title}
+										</motion.h2>
+									</AnimatePresence>
 
-									<motion.p
-										initial={{ y: 30, opacity: 0 }}
-										animate={{ y: 0, opacity: 1 }}
-										transition={{ delay: 0.5 }}
-										className="text-xl lg:text-2xl text-slate-300 mb-10 leading-relaxed"
-									>
-										{slides[currentSlide].subtitle}
-									</motion.p>
+									<AnimatePresence mode="wait">
+										<motion.p
+											key={`subtitle-${currentSlide}`}
+											initial={{ opacity: 0, y: 20 }}
+											animate={{ opacity: 1, y: 0 }}
+											exit={{ opacity: 0, y: -20 }}
+											transition={{ duration: 0.5, delay: 0.1 }}
+											className="text-2xl text-slate-300 mb-10 leading-relaxed"
+										>
+											{slides[currentSlide].subtitle}
+										</motion.p>
+									</AnimatePresence>
 
 									<motion.div
 										initial={{ y: 30, opacity: 0 }}
 										animate={{ y: 0, opacity: 1 }}
 										transition={{ delay: 0.6 }}
-										className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+										className="flex gap-4"
 									>
 										<Button
 											size="lg"
@@ -351,6 +353,84 @@ export default function Hero() {
 							</div>
 						</motion.div>
 					</AnimatePresence>
+
+					{/* Mobile: apenas textos animados, fundo fixo */}
+					<div className="absolute inset-0 lg:hidden">
+						<div className="absolute inset-0 bg-gradient-to-br from-[#1e3a5f] via-[#2c5282] to-[#1a365d]">
+							<div className="absolute inset-0 opacity-10">
+								<div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl"></div>
+								<div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"></div>
+							</div>
+						</div>
+
+						<div className="relative h-full flex items-center justify-center p-6 pt-28 pb-32">
+							<div className="max-w-4xl text-center">
+								<motion.div
+									initial={{ y: 30, opacity: 0 }}
+									animate={{ y: 0, opacity: 1 }}
+									transition={{ delay: 0.3 }}
+								>
+									<span className="inline-block px-6 py-3 bg-brand-400/20 border border-brand-400/30 rounded-full text-brand-300 text-sm font-medium mb-6 backdrop-blur-sm">
+										Excelência em Consultoria
+									</span>
+								</motion.div>
+
+								<AnimatePresence mode="wait">
+									<motion.h2
+										key={`title-mobile-${currentSlide}`}
+										initial={{ opacity: 0, y: 20 }}
+										animate={{ opacity: 1, y: 0 }}
+										exit={{ opacity: 0, y: -20 }}
+										transition={{ duration: 0.5 }}
+										className="text-4xl sm:text-5xl font-black text-white mb-6 leading-tight"
+									>
+										{slides[currentSlide].title}
+									</motion.h2>
+								</AnimatePresence>
+
+								<AnimatePresence mode="wait">
+									<motion.p
+										key={`subtitle-mobile-${currentSlide}`}
+										initial={{ opacity: 0, y: 20 }}
+										animate={{ opacity: 1, y: 0 }}
+										exit={{ opacity: 0, y: -20 }}
+										transition={{ duration: 0.5, delay: 0.1 }}
+										className="text-xl text-slate-300 mb-10 leading-relaxed"
+									>
+										{slides[currentSlide].subtitle}
+									</motion.p>
+								</AnimatePresence>
+
+								<motion.div
+									initial={{ y: 30, opacity: 0 }}
+									animate={{ y: 0, opacity: 1 }}
+									transition={{ delay: 0.6 }}
+									className="flex flex-col sm:flex-row gap-4 justify-center"
+								>
+									<Button
+										size="lg"
+										onClick={scrollToContact}
+										className="bg-gradient-to-r from-[#4c87b4] to-[#4c87b4] hover:from-[#3a6d94] hover:to-[#3a6d94] text-white px-8 py-6 text-lg font-semibold rounded-2xl shadow-2xl hover:shadow-[0_10px_30px_rgba(76,135,180,0.5)] transition-all duration-300 group"
+									>
+										Começar Agora
+										<ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+									</Button>
+									<Button
+										size="lg"
+										variant="outline"
+										onClick={() =>
+											document.getElementById("services")?.scrollIntoView({
+												behavior: "smooth",
+											})
+										}
+										className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#4c87b4] px-8 py-6 text-lg font-semibold rounded-2xl backdrop-blur-sm transition-colors"
+									>
+										Explorar Serviços
+									</Button>
+								</motion.div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 
