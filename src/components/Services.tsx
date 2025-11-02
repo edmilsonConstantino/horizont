@@ -152,7 +152,7 @@ export default function Services() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white mb-4">
-            Nossos <span className="bg-gradient-to-r from-[#4c87b4] to-[#4c87b4] bg-clip-text text-transparent">Serviços</span>
+            Nossos <span className="bg-gradient-to-r from-[#5290c2] to-[#5290c2] bg-clip-text text-transparent">Serviços</span>
           </h2>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto">
             Soluções completas e integradas para todas as necessidades da sua empresa
