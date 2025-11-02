@@ -354,7 +354,7 @@ export default function Hero() {
 				</div>
 			</div>
 
-			<div className="fixed bottom-6 right-6 z-50">
+			<div className="fixed bottom-20 right-6 z-50 lg:bottom-6">
 				<div className="relative flex items-center gap-3">
 					<AnimatePresence>
 						{showDropdown && (
@@ -462,6 +462,14 @@ export default function Hero() {
 						onClick={() => setShowDropdown(!showDropdown)}
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.95 }}
+						animate={{
+							y: [0, -8, 0],
+						}}
+						transition={{
+							duration: 2,
+							repeat: Infinity,
+							ease: "easeInOut",
+						}}
 						className="relative w-16 h-16 bg-gradient-to-br from-[#4c87b4] to-[#3a6d94] rounded-full flex items-center justify-center shadow-2xl hover:shadow-[0_10px_30px_rgba(76,135,180,0.5)] transition-all overflow-hidden"
 					>
 						<MessageCircle className="h-7 w-7 text-white" />
