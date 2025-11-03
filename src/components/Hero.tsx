@@ -137,7 +137,11 @@ export default function Hero() {
 									{ label: "Serviços", icon: "💼", href: "#services" },
 									{ label: "Sobre", icon: "ℹ️", href: "#about" },
 									{ label: "Contato", icon: "📧", href: "#contact" },
+									{ label: "Whatsap", icon: " ", href: "w"}
+								
+									
 								].map((item, i) => (
+									
 									<motion.a
 										key={item.label}
 										href={item.href}
@@ -163,6 +167,7 @@ export default function Hero() {
 										>
 											<ArrowRight className="h-5 w-5 text-brand-400" />
 										</motion.div>
+
 									</motion.a>
 								))}
 							</nav>
@@ -371,13 +376,13 @@ export default function Hero() {
 						</motion.div>
 					</AnimatePresence>
 
-					{/* Mobile: textos animados com imagem de fundo */}
+					{/* Mobile: carrossel com animação igual ao desktop */}
 					<AnimatePresence mode="wait">
 						<motion.div
 							key={`mobile-${currentSlide}`}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
+							initial={{ opacity: 0, x: 100 }}
+							animate={{ opacity: 1, x: 0 }}
+							exit={{ opacity: 0, x: -100 }}
 							transition={{ duration: 0.7 }}
 							className="absolute inset-0 lg:hidden"
 						>
@@ -475,7 +480,7 @@ export default function Hero() {
 								/>
 
 								<motion.a
-									href="https://wa.me/258841234567"
+									href="https://wa.me/258860195511"
 									target="_blank"
 									rel="noopener noreferrer"
 									onClick={() => {
@@ -516,51 +521,56 @@ export default function Hero() {
 								</motion.a>
 
 								<motion.button
-									onClick={() => {
-										setShowDropdown(false);
-										setShowChatbot(true);
-										setHasNotification(false);
-									}}
-									initial={{ scale: 0, opacity: 0 }}
-									animate={{ scale: 1, opacity: 1 }}
-									exit={{ scale: 0, opacity: 0 }}
-									transition={{ delay: 0.15, type: "spring", damping: 15 }}
-									whileHover={{ scale: 1.15, y: -5 }}
-									whileTap={{ scale: 0.95 }}
-									className="relative w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-xl hover:shadow-purple-500/50 transition-all"
-								>
-									<div className="relative w-8 h-8">
-										<div className="absolute inset-0 bg-white rounded-lg"></div>
-										<div className="absolute top-1 left-1 right-1 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-md h-3"></div>
-										<div className="absolute top-1.5 left-2 w-1 h-1 bg-white rounded-full"></div>
-										<div className="absolute top-1.5 right-2 w-1 h-1 bg-white rounded-full"></div>
-										<div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-1 bg-gray-800 rounded-full"></div>
-										<div className="absolute top-0.5 left-1/2 -translate-x-1/2 w-1 h-1.5 bg-yellow-400 rounded-t-full"></div>
-									</div>
+	onClick={() => {
+		setShowDropdown(false);
+		setShowChatbot(true);
+		setHasNotification(false);
+	}}
+	initial={{ scale: 0, opacity: 0 }}
+	animate={{ scale: 1, opacity: 1 }}
+	exit={{ scale: 0, opacity: 0 }}
+	transition={{ delay: 0.15, type: "spring", damping: 15 }}
+	whileHover={{ scale: 1.15, y: -5 }}
+	whileTap={{ scale: 0.95 }}
+	className="relative w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center shadow-xl hover:shadow-purple-500/50 transition-all"
+>
+	{/* Adicione este texto acima do botão rosa */}
+	<div className="absolute -top-7 left-1/2 -translate-x-1/2 text-white text-xs font-bold whitespace-nowrap">
+		Chat
+	</div>
 
-									<motion.div
-										initial={{ opacity: 0, y: 5 }}
-										whileHover={{ opacity: 1, y: 0 }}
-										className="absolute bottom-full mb-3 px-4 py-2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium rounded-lg whitespace-nowrap shadow-lg pointer-events-none"
-									>
-										Chat IA 🤖
-										<div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900/95" />
-									</motion.div>
+	<div className="relative w-8 h-8">
+		<div className="absolute inset-0 bg-white rounded-lg"></div>
+		<div className="absolute top-1 left-1 right-1 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-md h-3"></div>
+		<div className="absolute top-1.5 left-2 w-1 h-1 bg-white rounded-full"></div>
+		<div className="absolute top-1.5 right-2 w-1 h-1 bg-white rounded-full"></div>
+		<div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-1 bg-gray-800 rounded-full"></div>
+		<div className="absolute top-0.5 left-1/2 -translate-x-1/2 w-1 h-1.5 bg-yellow-400 rounded-t-full"></div>
+	</div>
 
-									<motion.div
-										animate={{
-											scale: [1, 1.3, 1],
-											opacity: [0.5, 0, 0.5],
-										}}
-										transition={{
-											duration: 2,
-											repeat: Infinity,
-											ease: "easeInOut",
-											delay: 0.5,
-										}}
-										className="absolute inset-0 bg-purple-400 rounded-full"
-									/>
-								</motion.button>
+	<motion.div
+		initial={{ opacity: 0, y: 5 }}
+		whileHover={{ opacity: 1, y: 0 }}
+		className="absolute bottom-full mb-3 px-4 py-2 bg-gray-900/95 backdrop-blur-sm text-white text-xs font-medium rounded-lg whitespace-nowrap shadow-lg pointer-events-none"
+	>
+		Chat IA 🤖
+		<div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-gray-900/95" />
+	</motion.div>
+
+	<motion.div
+		animate={{
+			scale: [1, 1.3, 1],
+			opacity: [0.5, 0, 0.5],
+		}}
+		transition={{
+			duration: 2,
+			repeat: Infinity,
+			ease: "easeInOut",
+			delay: 0.5,
+		}}
+		className="absolute inset-0 bg-purple-400 rounded-full"
+	/>
+</motion.button>
 							</>
 						)}
 					</AnimatePresence>
@@ -637,7 +647,7 @@ export default function Hero() {
 
 							<div className="flex items-center gap-2">
 								<motion.a
-									href="https://wa.me/258841234567"
+									href="https://wa.me/258860195511"
 									target="_blank"
 									rel="noopener noreferrer"
 									whileHover={{ scale: 1.1 }}

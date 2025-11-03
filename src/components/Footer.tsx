@@ -86,6 +86,9 @@ export default function Footer() {
       <div className="bg-[#4c87b4] py-4 text-center text-white">
         <p>&copy; {new Date().getFullYear()} Horizon Global Consulting. Todos os direitos reservados.</p>
       </div>
+
+
+      
     </footer>
   );
 }
