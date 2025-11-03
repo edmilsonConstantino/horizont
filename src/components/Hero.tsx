@@ -300,7 +300,7 @@ export default function Hero() {
 								style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
 							>
 								{/* Gradiente antes da imagem */}
-								<div className="absolute inset-0 bg-gradient-to-r from-[#1e3a5f]/90 via-[#2c5282]/70 to-transparent" />
+								<div className="absolute inset-0 bg-gradient-to-r from-[#1e3a5f]/0 via-[#2c5282]/70 to-transparent" />
 								
 								{/* Camada leve sobre a imagem (opcional) */}
 								<div className="absolute inset-0 bg-gradient-to-br from-[#1a365d]/60 via-[#2c5282]/40 to-[#1e3a5f]/60" />
@@ -387,12 +387,12 @@ export default function Hero() {
 							className="absolute inset-0 lg:hidden"
 						>
 							<div
-								className="absolute inset-0 bg-cover bg-center"
-								style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
-							>
-								{/* Gradiente sobre a imagem */}
-								<div className="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/85 via-[#2c5282]/75 to-[#1a365d]/85" />
-							</div>
+	className="absolute inset-0 bg-cover bg-center"
+	style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+>
+	{/* Gradiente sobre a imagem - azul forte em cima, transparente embaixo */}
+	<div className="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/90 via-[#2c5282]/50 to-transparent" />
+</div>
 
 							<div className="relative h-full flex items-center justify-center p-6 pt-28 pb-32">
 								<div className="max-w-4xl text-center">
