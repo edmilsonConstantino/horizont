@@ -12,6 +12,7 @@ const slides = [
 	{
 		title: "Inovação & Crescimento",
 		subtitle: "Transforme desafios em oportunidades",
+		image:"/public/hero.jpg",
 	},
 	{
 		title: "Resultados Comprovados",
@@ -40,6 +41,15 @@ export default function Hero() {
 
 	return (
 		<section className="relative min-h-screen bg-gradient-to-br from-[#1a202c] via-[#2d3748] to-[#1a202c] overflow-hidden">
+
+			{/* Efeito de sol no canto superior direito */}
+			<motion.div
+				initial={{ opacity: 0, scale: 0.9 }}
+				animate={{ opacity: 1, scale: [1, 1.08, 1] }}
+				transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+				className="absolute top-0 right-0 w-[520px] h-[520px] bg-gradient-to-bl from-yellow-200/30 via-white/25 to-orange-300/20 rounded-full blur-3xl pointer-events-none"
+			/>
+
 			<motion.button
 				onClick={() => setShowMobileMenu(!showMobileMenu)}
 				whileHover={{ scale: 1.05 }}
@@ -277,11 +287,18 @@ export default function Hero() {
 							transition={{ duration: 0.7 }}
 							className="absolute inset-0 hidden lg:block"
 						>
+							{/* Fundo branco profissional */}
+							<div className="absolute inset-0 bg-white" />
+							
 							<div
 								className="absolute inset-0 bg-cover bg-center"
 								style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
 							>
-								<div className="absolute inset-0 bg-gradient-to-br from-[#1e3a5f]/90 via-[#2c5282]/85 to-[#1a365d]/90" />
+								{/* Gradiente antes da imagem */}
+								<div className="absolute inset-0 bg-gradient-to-r from-[#1e3a5f]/90 via-[#2c5282]/70 to-transparent" />
+								
+								{/* Camada leve sobre a imagem (opcional) */}
+								<div className="absolute inset-0 bg-gradient-to-br from-[#1a365d]/60 via-[#2c5282]/40 to-[#1e3a5f]/60" />
 							</div>
 
 							<div className="relative h-full flex items-center justify-center p-12">
@@ -354,83 +371,93 @@ export default function Hero() {
 						</motion.div>
 					</AnimatePresence>
 
-					{/* Mobile: apenas textos animados, fundo fixo */}
-					<div className="absolute inset-0 lg:hidden">
-						<div className="absolute inset-0 bg-gradient-to-br from-[#1e3a5f] via-[#2c5282] to-[#1a365d]">
-							<div className="absolute inset-0 opacity-10">
-								<div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl"></div>
-								<div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600 rounded-full filter blur-3xl"></div>
+					{/* Mobile: textos animados com imagem de fundo */}
+					<AnimatePresence mode="wait">
+						<motion.div
+							key={`mobile-${currentSlide}`}
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.7 }}
+							className="absolute inset-0 lg:hidden"
+						>
+							<div
+								className="absolute inset-0 bg-cover bg-center"
+								style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+							>
+								{/* Gradiente sobre a imagem */}
+								<div className="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/85 via-[#2c5282]/75 to-[#1a365d]/85" />
 							</div>
-						</div>
 
-						<div className="relative h-full flex items-center justify-center p-6 pt-28 pb-32">
-							<div className="max-w-4xl text-center">
-								<motion.div
-									initial={{ y: 30, opacity: 0 }}
-									animate={{ y: 0, opacity: 1 }}
-									transition={{ delay: 0.3 }}
-								>
-									<span className="inline-block px-6 py-3 bg-brand-400/20 border border-brand-400/30 rounded-full text-brand-300 text-sm font-medium mb-6 backdrop-blur-sm">
-										Excelência em Consultoria
-									</span>
-								</motion.div>
+							<div className="relative h-full flex items-center justify-center p-6 pt-28 pb-32">
+								<div className="max-w-4xl text-center">
+									<motion.div
+										initial={{ y: 30, opacity: 0 }}
+										animate={{ y: 0, opacity: 1 }}
+										transition={{ delay: 0.3 }}
+									>
+										<span className="inline-block px-6 py-3 bg-brand-400/20 border border-brand-400/30 rounded-full text-brand-300 text-sm font-medium mb-6 backdrop-blur-sm">
+											Excelência em Consultoria
+										</span>
+									</motion.div>
 
-								<AnimatePresence mode="wait">
-									<motion.h2
-										key={`title-mobile-${currentSlide}`}
-										initial={{ opacity: 0, y: 20 }}
-										animate={{ opacity: 1, y: 0 }}
-										exit={{ opacity: 0, y: -20 }}
-										transition={{ duration: 0.5 }}
-										className="text-4xl sm:text-5xl font-black text-white mb-6 leading-tight"
-									>
-										{slides[currentSlide].title}
-									</motion.h2>
-								</AnimatePresence>
+									<AnimatePresence mode="wait">
+										<motion.h2
+											key={`title-mobile-${currentSlide}`}
+											initial={{ opacity: 0, y: 20 }}
+											animate={{ opacity: 1, y: 0 }}
+											exit={{ opacity: 0, y: -20 }}
+											transition={{ duration: 0.5 }}
+											className="text-4xl sm:text-5xl font-black text-white mb-6 leading-tight"
+										>
+											{slides[currentSlide].title}
+										</motion.h2>
+									</AnimatePresence>
 
-								<AnimatePresence mode="wait">
-									<motion.p
-										key={`subtitle-mobile-${currentSlide}`}
-										initial={{ opacity: 0, y: 20 }}
-										animate={{ opacity: 1, y: 0 }}
-										exit={{ opacity: 0, y: -20 }}
-										transition={{ duration: 0.5, delay: 0.1 }}
-										className="text-xl text-slate-300 mb-10 leading-relaxed"
-									>
-										{slides[currentSlide].subtitle}
-									</motion.p>
-								</AnimatePresence>
+									<AnimatePresence mode="wait">
+										<motion.p
+											key={`subtitle-mobile-${currentSlide}`}
+											initial={{ opacity: 0, y: 20 }}
+											animate={{ opacity: 1, y: 0 }}
+											exit={{ opacity: 0, y: -20 }}
+											transition={{ duration: 0.5, delay: 0.1 }}
+											className="text-xl text-slate-300 mb-10 leading-relaxed"
+										>
+											{slides[currentSlide].subtitle}
+										</motion.p>
+									</AnimatePresence>
 
-								<motion.div
-									initial={{ y: 30, opacity: 0 }}
-									animate={{ y: 0, opacity: 1 }}
-									transition={{ delay: 0.6 }}
-									className="flex flex-col sm:flex-row gap-4 justify-center"
-								>
-									<Button
-										size="lg"
-										onClick={scrollToContact}
-										className="bg-gradient-to-r from-[#4c87b4] to-[#4c87b4] hover:from-[#3a6d94] hover:to-[#3a6d94] text-white px-8 py-6 text-lg font-semibold rounded-2xl shadow-2xl hover:shadow-[0_10px_30px_rgba(76,135,180,0.5)] transition-all duration-300 group"
+									<motion.div
+										initial={{ y: 30, opacity: 0 }}
+										animate={{ y: 0, opacity: 1 }}
+										transition={{ delay: 0.6 }}
+										className="flex flex-col sm:flex-row gap-4 justify-center"
 									>
-										Começar Agora
-										<ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-									</Button>
-									<Button
-										size="lg"
-										variant="outline"
-										onClick={() =>
-											document.getElementById("services")?.scrollIntoView({
-												behavior: "smooth",
-											})
-										}
-										className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#4c87b4] px-8 py-6 text-lg font-semibold rounded-2xl backdrop-blur-sm transition-colors"
-									>
-										Explorar Serviços
-									</Button>
-								</motion.div>
+										<Button
+											size="lg"
+											onClick={scrollToContact}
+											className="bg-gradient-to-r from-[#4c87b4] to-[#4c87b4] hover:from-[#3a6d94] hover:to-[#3a6d94] text-white px-8 py-6 text-lg font-semibold rounded-2xl shadow-2xl hover:shadow-[0_10px_30px_rgba(76,135,180,0.5)] transition-all duration-300 group"
+										>
+											Começar Agora
+											<ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+										</Button>
+										<Button
+											size="lg"
+											variant="outline"
+											onClick={() =>
+												document.getElementById("services")?.scrollIntoView({
+													behavior: "smooth",
+												})
+											}
+											className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#4c87b4] px-8 py-6 text-lg font-semibold rounded-2xl backdrop-blur-sm transition-colors"
+										>
+											Explorar Serviços
+										</Button>
+									</motion.div>
+								</div>
 							</div>
-						</div>
-					</div>
+						</motion.div>
+					</AnimatePresence>
 				</div>
 			</div>
 
