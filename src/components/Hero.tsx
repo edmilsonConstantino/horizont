@@ -9,7 +9,7 @@ const slides = [
 	{
 		title: "Consultoria de Excelência",
 		subtitle: "Soluções estratégicas para o seu negócio",
-		image: "/public/Contabilidade.png", 
+		image: "/Contabilidade.png", 
 	},
 	{
 		title: "Inovação & Crescimento",
