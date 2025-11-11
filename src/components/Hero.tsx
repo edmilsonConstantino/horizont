@@ -19,7 +19,7 @@ const slides = [
 	{
 		title: "Resultados Comprovados",
 		subtitle: "Parceiro estratégico do seu sucesso",
-		image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+		image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=80",
 	},
 ];
 
@@ -44,7 +44,7 @@ export default function Hero() {
 	return (
 		<section className="relative min-h-screen bg-gradient-to-br from-[#1a202c] via-[#2d3748] to-[#1a202c] overflow-hidden">
 
-			{/* Efeito de sol no canto superior direito */}
+			{}
 			<motion.div
 				initial={{ opacity: 0, scale: 0.9 }}
 				animate={{ opacity: 1, scale: [1, 1.08, 1] }}
@@ -133,47 +133,41 @@ export default function Hero() {
 								</p>
 							</motion.div>
 
-							<nav className="space-y-6">
-								{[
-									{ label: "Início", icon: "🏠", href: "#" },
-									{ label: "Serviços", icon: "💼", href: "#services" },
-									{ label: "Sobre", icon: "ℹ️", href: "#about" },
-									{ label: "Contato", icon: "📧", href: "#contact" },
-									{ label: "Whatsap", icon: " ", href: "w"}
-								
-									
-								].map((item, i) => (
-									
-									<motion.a
-										key={item.label}
-										href={item.href}
-										onClick={() => setShowMobileMenu(false)}
-										initial={{ x: -50, opacity: 0 }}
-										animate={{ x: 0, opacity: 1 }}
-										transition={{ delay: 0.3 + i * 0.1 }}
-										className="flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-[#4c87b4]/20 hover:border-[#4c87b4]/50 transition-all group cursor-pointer"
-									>
-										<motion.span
-											whileHover={{ scale: 1.2, rotate: 10 }}
-											className="text-3xl"
-										>
-											{item.icon}
-										</motion.span>
-										<span className="text-white font-medium text-lg group-hover:text-brand-300 transition-colors">
-											{item.label}
-										</span>
-										<motion.div
-											initial={{ x: -10, opacity: 0 }}
-											whileHover={{ x: 0, opacity: 1 }}
-											className="ml-auto"
-										>
-											<ArrowRight className="h-5 w-5 text-brand-400" />
-										</motion.div>
-
-									</motion.a>
-								))}
-							</nav>
-
+				<nav className="space-y-3">
+	{[
+		{ label: "Início", icon: "🏠", href: "#" },
+		{ label: "Serviços", icon: "💼", href: "#services" },
+		{ label: "Sobre", icon: "ℹ️", href: "#about" },
+		{ label: "Contato", icon: "📧", href: "#contact" },
+	].map((item, i) => (
+		<motion.a
+			key={item.label}
+			href={item.href}
+			onClick={() => setShowMobileMenu(false)}
+			initial={{ x: -50, opacity: 0 }}
+			animate={{ x: 0, opacity: 1 }}
+			transition={{ delay: 0.3 + i * 0.1 }}
+			className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-[#4c87b4]/20 hover:border-[#4c87b4]/50 transition-all group cursor-pointer"
+		>
+			<motion.span
+				whileHover={{ scale: 1.2, rotate: 10 }}
+				className="text-xl"
+			>
+				{item.icon}
+			</motion.span>
+			<span className="text-white font-medium text-sm group-hover:text-brand-300 transition-colors">
+				{item.label}
+			</span>
+			<motion.div
+				initial={{ x: -10, opacity: 0 }}
+				whileHover={{ x: 0, opacity: 1 }}
+				className="ml-auto"
+			>
+				<ArrowRight className="h-4 w-4 text-brand-400" />
+			</motion.div>
+		</motion.a>
+	))}
+</nav>
 							<motion.div
 								initial={{ y: 50, opacity: 0 }}
 								animate={{ y: 0, opacity: 1 }}
@@ -392,8 +386,8 @@ export default function Hero() {
 	className="absolute inset-0 bg-cover bg-center"
 	style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
 >
-	{/* Gradiente sobre a imagem - azul forte em cima, transparente embaixo */}
-	<div className="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/90 via-[#2c5282]/50 to-transparent" />
+	{/* Gradiente azul cobrindo toda a tela - em cima, meio e embaixo */}
+	<div className="absolute inset-0 bg-gradient-to-b from-[#1e3a5f]/90 via-[#2c5282]/70 to-[#1e3a5f]/90" />
 </div>
 
 							<div className="relative h-full flex items-center justify-center p-6 pt-28 pb-32">

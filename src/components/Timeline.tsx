@@ -30,7 +30,7 @@ const milestones = [
 
 export default function Timeline() {
 	return (
-		<section className="py-24 bg-slate-950 relative overflow-hidden">
+		<section className="py-2 bg-slate-950 relative overflow-hidden">
 			{/* Background Pattern */}
 			<div className="absolute inset-0 opacity-5">
 				<div
@@ -52,7 +52,7 @@ export default function Timeline() {
 				>
 					<h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
 						Nossa{" "}
-						<span className="bg-gradient-to-r from-[#0077C8] to-[#0077C8] bg-clip-text text-transparent">
+						<span className="bg-gradient-to-r from-[#5290c2] to-[#5290c2] bg-clip-text text-transparent">
 							História
 						</span>
 					</h2>

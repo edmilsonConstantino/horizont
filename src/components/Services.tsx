@@ -179,7 +179,7 @@ export default function Services() {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="flex justify-center gap-4 mt-6">
+              {/* <div className="flex justify-center gap-4 mt-6">
                 <Button
                   onClick={prevSlide}
                   size="icon"
@@ -194,7 +194,7 @@ export default function Services() {
                 >
                   <ChevronRight className="h-6 w-6" />
                 </Button>
-              </div>
+              </div> */}
 
               <div className="flex justify-center gap-2 mt-4">
                 {services.map((_, i) => (

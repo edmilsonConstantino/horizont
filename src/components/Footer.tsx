@@ -67,15 +67,15 @@ export default function Footer() {
             <ul className="space-y-3 text-slate-300">
               <li className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 text-[#4c87b4] flex-shrink-0 mt-0.5" />
-                <span>Av. Julius Nyerere, 1234<br />Maputo, Moçambique</span>
+                <span>Avenida Romão Fernandes Farinha, n.º 376<br />Maputo, Moçambique</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-5 w-5 text-[#4c87b4] flex-shrink-0" />
-                <span>+258 84 123 4567</span>
+                <span>+258 860 195 511</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-5 w-5 text-[#4c87b4] flex-shrink-0" />
-                <span>info@horizonglobal.co.mz</span>
+                <span>comercial@horizonconsulting.co.mz</span>
               </li>
             </ul>
           </div>
