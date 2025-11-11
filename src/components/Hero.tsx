@@ -2,19 +2,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
 import { ArrowRight, MessageCircle, Phone, Menu, X, Bell } from "lucide-react";
 import { useState, useEffect } from "react";
-import Logo from './logo.jpg';
-import hero from '@/logo.png';
+import hero from '@/hero.jpg';
+import contabilidade from '@/contabilidade.png';
 
 const slides = [
 	{
 		title: "Consultoria de Excelência",
 		subtitle: "Soluções estratégicas para o seu negócio",
-		image: "/public/contabilidade.png", 
+		image: "/contabilidade.png", 
 	},
 	{
 		title: "Inovação & Crescimento",
 		subtitle: "Transforme desafios em oportunidades",
-		image:"/public/hero.jpg",
+		image:"/hero.jpg",
 	},
 	{
 		title: "Resultados Comprovados",
