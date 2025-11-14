@@ -3,6 +3,7 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Calculator, FileText, ClipboardCheck, TrendingUp, BarChart3, Users, Briefcase, Receipt, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -55,7 +56,7 @@ const services = [
     ]
   },
   {
-    id: "consultoria-gestao",
+    id: "consultoria",
     icon: TrendingUp,
     title: "Consultoria de Gestão Empresarial",
     color: "from-[#4c87b4] to-[#4c87b4]",
@@ -120,6 +121,7 @@ const services = [
 export default function Services() {
   const [showAll, setShowAll] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!showAll) {
@@ -175,26 +177,9 @@ export default function Services() {
                   transition={{ duration: 0.5 }}
                   className="px-4"
                 >
-                  <ServiceCard service={services[currentIndex]} />
+                  <ServiceCard service={services[currentIndex]} navigate={navigate} />
                 </motion.div>
               </AnimatePresence>
-
-              {/* <div className="flex justify-center gap-4 mt-6">
-                <Button
-                  onClick={prevSlide}
-                  size="icon"
-                  className="bg-[#4c87b4]/20 hover:bg-[#4c87b4]/30 text-white rounded-full"
-                >
-                  <ChevronLeft className="h-6 w-6" />
-                </Button>
-                <Button
-                  onClick={nextSlide}
-                  size="icon"
-                  className="bg-[#4c87b4]/20 hover:bg-[#4c87b4]/30 text-white rounded-full"
-                >
-                  <ChevronRight className="h-6 w-6" />
-                </Button>
-              </div> */}
 
               <div className="flex justify-center gap-2 mt-4">
                 {services.map((_, i) => (
@@ -228,7 +213,7 @@ export default function Services() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: offset * 0.1, duration: 0.5 }}
                           >
-                            <ServiceCard service={services[serviceIndex]} />
+                            <ServiceCard service={services[serviceIndex]} navigate={navigate} />
                           </motion.div>
                         );
                       })}
@@ -274,7 +259,7 @@ export default function Services() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.05, duration: 0.3 }}
               >
-                <ServiceCard service={service} />
+                <ServiceCard service={service} navigate={navigate} />
               </motion.div>
             ))}
           </div>
@@ -300,7 +285,7 @@ export default function Services() {
   );
 }
 
-function ServiceCard({ service }: { service: typeof services[0] }) {
+function ServiceCard({ service, navigate }: { service: typeof services[0], navigate: any }) {
   const Icon = service.icon;
 
   return (
@@ -333,7 +318,10 @@ function ServiceCard({ service }: { service: typeof services[0] }) {
           ))}
         </div>
 
-        <button className="w-full sm:w-auto bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white px-6 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group/btn">
+        <button 
+          onClick={() => navigate(`/service/${service.id}`)}
+          className="w-full sm:w-auto bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white px-6 py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 group/btn"
+        >
           <span>Saiba Mais</span>
           <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
         </button>

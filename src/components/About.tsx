@@ -30,15 +30,16 @@ export default function About() {
 						<p className="text-lg sm:text-xl text-slate-300 mb-6 leading-relaxed text-center lg:text-left">
 							A{" "}
 							<span className="font-semibold text-[#4c87b4]">
-								Horizon Global Consulting
+								Horizon Global Consulting, Lda.
 							</span>{" "}
-							é uma empresa líder em consultoria estratégica em Moçambique,
-							dedicada a fornecer suporte técnico e estratégico de excelência.
+							é uma empresa moçambicana especializada em assessoria e consultoria empresarial, 
+							oferecendo soluções estratégicas para impulsionar o crescimento e a eficiência 
+							das organizações.
 						</p>
 						<p className="text-base sm:text-lg text-slate-400 mb-8 leading-relaxed text-center lg:text-left">
-							Nosso compromisso é impulsionar o crescimento sustentável dos nossos
-							clientes através de soluções inovadoras, expertise técnica e um
-							profundo entendimento do mercado local e internacional.
+							Desde a sua fundação, a empresa tem se destacado na prestação de serviços em 
+							contabilidade, fiscalidade, auditoria, consultoria de gestão empresarial, controlo 
+							de gestão, gestão de recursos humanos, serviços administrativos e faturação.
 						</p>
 
 						{/* Stats Grid */}
@@ -82,36 +83,26 @@ export default function About() {
 								Nossa Missão
 							</h3>
 							<p className="text-slate-100 leading-relaxed">
-								Fornecer consultoria estratégica de classe mundial, capacitando
-								empresas em Moçambique a alcançar seus objetivos através de
-								soluções inovadoras e suporte técnico especializado.
+								Fornecer soluções estratégicas e inovadoras em gestão empresarial, 
+								ajudando organizações a alcançarem eficiência, conformidade e crescimento 
+								sustentável. Através de serviços de consultoria, contabilidade, fiscalidade, 
+								auditoria e gestão empresarial, buscamos otimizar processos, fortalecer a 
+								tomada de decisões e impulsionar o sucesso dos nossos clientes.
 							</p>
 						</Card>
 
-						{/* Card Valores */}
+						{/* Card Visão */}
 						<Card className="p-8 bg-[#4c87b4]/20 border border-[#4c87b4]/40 rounded-2xl shadow-md backdrop-blur-sm transition-all hover:bg-[#4c87b4]/30">
 							<h3 className="text-2xl font-bold text-white mb-4">
-								Nossos Valores
+								Nossa Visão
 							</h3>
-							<ul className="space-y-3 text-slate-100">
-								<li className="flex items-start">
-									<span className="text-white mr-2">•</span>
-									<span>Excelência em cada projeto</span>
-								</li>
-								<li className="flex items-start">
-									<span className="text-white mr-2">•</span>
-									<span>Integridade e transparência</span>
-								</li>
-								<li className="flex items-start">
-									<span className="text-white mr-2">•</span>
-									<span>Inovação contínua</span>
-								</li>
-								<li className="flex items-start">
-									<span className="text-white mr-2">•</span>
-									<span>Compromisso com resultados</span>
-								</li>
-							</ul>
+							<p className="text-slate-100 leading-relaxed">
+								Ser reconhecida como referência em consultoria e gestão empresarial em 
+								Moçambique e internacionalmente, impulsionando a transformação digital e 
+								a eficiência organizacional por meio de soluções inovadoras e estratégicas.
+							</p>
 						</Card>
+
 					</motion.div>
 				</div>
 			</div>

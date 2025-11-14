@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { ArrowLeft, Check, MessageCircle } from "lucide-react";
 import { Calculator, FileText, ClipboardCheck, TrendingUp, BarChart3, Users, Briefcase, Receipt } from "lucide-react";
+import { useEffect } from "react";
 
 const servicesData: Record<string, any> = {
   contabilidade: {
@@ -211,6 +212,11 @@ export default function ServiceDetail() {
   const { serviceId } = useParams();
   const navigate = useNavigate();
   const service = serviceId ? servicesData[serviceId] : null;
+
+  // Scroll to top when component mounts or serviceId changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [serviceId]);
 
   if (!service) {
     return (

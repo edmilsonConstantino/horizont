@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { MapPin, Phone, Mail, Facebook, Linkedin, Twitter } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "./ui/use-toast";
@@ -14,13 +15,27 @@ export default function Contact() {
     name: "",
     email: "",
     phone: "",
+    service: "",
     message: ""
   });
+
+  const services = [
+    "Contabilidade",
+    "Consultoria Fiscal",
+    "Consultoria Financeira",
+    "Auditoria",
+    "Consultoria de Gestão Empresarial",
+    "Controlo de Gestão",
+    "Recursos Humanos",
+    "Serviços Administrativos",
+    "Faturação",
+    "Outro"
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email || !formData.service || !formData.message) {
       toast({
         title: "Erro",
         description: "Por favor, preencha todos os campos obrigatórios.",
@@ -34,11 +49,11 @@ export default function Contact() {
       description: "Entraremos em contato em breve.",
     });
 
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
   };
 
   return (
-    <section id="contact" className="py-24 bg-slate-900">
+    <section id="contact" className="py-21 pb-3 bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -109,6 +124,31 @@ export default function Contact() {
                 </div>
 
                 <div>
+                  <Label htmlFor="service" className="text-slate-300">
+                    Serviço de Interesse *
+                  </Label>
+                  <Select 
+                    value={formData.service} 
+                    onValueChange={(value) => setFormData({ ...formData, service: value })}
+                  >
+                    <SelectTrigger className="mt-2 bg-slate-900/50 border-slate-700 text-white">
+                      <SelectValue placeholder="Selecione um serviço" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-900 border-slate-700">
+                      {services.map((service) => (
+                        <SelectItem 
+                          key={service} 
+                          value={service}
+                          className="text-white hover:bg-slate-800 focus:bg-slate-800"
+                        >
+                          {service}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
                   <Label htmlFor="message" className="text-slate-300">
                     Mensagem *
                   </Label>
@@ -149,7 +189,7 @@ export default function Contact() {
                   <h3 className="text-lg font-bold text-white mb-2">Localização</h3>
                   <p className="text-slate-400">
                     Maputo, Moçambique<br />
-                    Av. Julius Nyerere, 1234
+                    Avenida Romão Fernandes Farinha, n.º 376
                   </p>
                 </div>
               </div>
@@ -163,14 +203,13 @@ export default function Contact() {
                 <div>
                   <h3 className="text-lg font-bold text-white mb-2">Telefone</h3>
                   <p className="text-slate-400">
-                    +258 84 123 4567<br />
-                    +258 87 765 4321
+                    +258 86 019 5510
                   </p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-6 bg-slate-800/50 backdrop-blur border-slate-700 hover:border-[#5290c2]/50 hover:shadow-lg hover:shadow-[#5290c2]/20 transition-all">
+            <Card className="p-9 bg-slate-800/50 backdrop-blur border-slate-700 hover:border-[#5290c2]/50 hover:shadow-lg hover:shadow-[#5290c2]/20 transition-all">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-[#5290c2] rounded-2xl flex items-center justify-center flex-shrink-0">
                   <Mail className="h-6 w-6 text-white" />
@@ -178,8 +217,7 @@ export default function Contact() {
                 <div>
                   <h3 className="text-lg font-bold text-white mb-2">Email</h3>
                   <p className="text-slate-400">
-                    info@horizonglobal.co.mz<br />
-                    contato@horizonglobal.co.mz
+                    comercial@horizonconsulting.co.mz
                   </p>
                 </div>
               </div>
