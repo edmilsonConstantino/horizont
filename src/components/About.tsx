@@ -4,9 +4,9 @@ import { Shield, Target, Users2, TrendingUp } from "lucide-react";
 
 const stats = [
 	{ icon: Shield, value: "100%", label: "Compromisso" },
-	{ icon: Target, value: "500+", label: "Projetos" },
-	{ icon: Users2, value: "200+", label: "Clientes" },
-	{ icon: TrendingUp, value: "15+", label: "Anos" }
+	{ icon: Target, value: "70+", label: "Projetos" },
+	{ icon: Users2, value: "15+", label: "Clientes" },
+	{ icon: TrendingUp, value: "3+", label: "Anos" }
 ];
 
 export default function About() {
