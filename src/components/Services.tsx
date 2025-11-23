@@ -127,7 +127,7 @@ export default function Services() {
     if (!showAll) {
       const timer = setInterval(() => {
         setCurrentIndex((prev) => (prev + 1) % services.length);
-      }, 4000);
+      }, 6000); // ALTERADO: de 4000 para 6000ms (6 segundos)
       return () => clearInterval(timer);
     }
   }, [showAll]);
@@ -222,20 +222,21 @@ export default function Services() {
                 </AnimatePresence>
               </div>
 
-              <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-4 pointer-events-none z-10">
+              {/* ALTERADO: Setas mais afastadas e maiores */}
+              <div className="absolute top-1/2 -translate-y-1/2 -left-20 -right-20 flex justify-between pointer-events-none z-10">
                 <Button
                   onClick={prevSlide}
                   size="icon"
-                  className="bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white rounded-full shadow-2xl pointer-events-auto w-12 h-12"
+                  className="bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white rounded-full shadow-2xl pointer-events-auto w-14 h-14"
                 >
-                  <ChevronLeft className="h-6 w-6" />
+                  <ChevronLeft className="h-7 w-7" />
                 </Button>
                 <Button
                   onClick={nextSlide}
                   size="icon"
-                  className="bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white rounded-full shadow-2xl pointer-events-auto w-12 h-12"
+                  className="bg-[#4c87b4] hover:bg-[#4c87b4]/90 text-white rounded-full shadow-2xl pointer-events-auto w-14 h-14"
                 >
-                  <ChevronRight className="h-6 w-6" />
+                  <ChevronRight className="h-7 w-7" />
                 </Button>
               </div>
 
