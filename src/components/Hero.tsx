@@ -57,11 +57,12 @@ useEffect(() => {
 }, [messages]);
 
 // ✅ WebSocket com reconexão automática
+// ✅ WebSocket com reconexão automática
 useEffect(() => {
   const connectWebSocket = () => {
     if (ws.current?.readyState === WebSocket.OPEN) return;
 
-    ws.current = new WebSocket("ws://127.0.0.1:8000/ws/chat/");
+    ws.current = new WebSocket("wss://horizon-backend-vmcy.onrender.com/ws/chat/");
 
     ws.current.onopen = () => {
       setIsConnected(true);
