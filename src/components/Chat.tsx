@@ -25,7 +25,12 @@ export default function Chat() {
   }, [messages]);
 
   useEffect(() => {
-    ws.current = new WebSocket("wss://horizon-backend-vmcy.onrender.com/ws/chat/");
+const PROTOCOL = window.location.protocol === "https:" ? "wss" : "ws";
+const HOST = window.location.host;
+const WS_URL = `${PROTOCOL}://${HOST}/ws/chat/`;
+
+ws.current = new WebSocket(WS_URL);
+
 
     ws.current.onopen = () => {
       console.log("✅ WebSocket conectado");
