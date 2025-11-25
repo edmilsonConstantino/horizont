@@ -122,7 +122,7 @@ useEffect(() => {
 
     ws.current.onclose = () => {
       setIsConnected(false);
-      // ✅ Reconecta após 3 segundos
+  
       reconnectTimeout.current = setTimeout(() => {
         connectWebSocket();
       }, 3000);
